@@ -11,9 +11,11 @@ let mapRR = {};
 let index = 0;
 
 /**
-  author - ijgong
+  gate 클래스
+  MicroService Architecture : Gate
+  developer - ijgong
   date - 20180912
-  target - gate
+  target git - msa_be_gate:develop
 */
 let server = http.createServer((req, res) => {
 

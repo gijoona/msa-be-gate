@@ -10,6 +10,11 @@ let mapResponse = {};
 let mapRR = {};
 let index = 0;
 
+/**
+  author - ijgong
+  date - 20180912
+  target - gate
+*/
 let server = http.createServer((req, res) => {
 
   let method = req.method;

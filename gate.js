@@ -11,7 +11,7 @@ let mapRR = {};
 let index = 0;
 
 /**
-  gate 클래스
+  Gate 클래스
   MicroService Architecture : Gate
   developer - ijgong
   date - 20180912

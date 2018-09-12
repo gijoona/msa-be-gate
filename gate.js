@@ -15,7 +15,7 @@ let index = 0;
   MicroService Architecture : Gate
   developer - ijgong
   date - 20180912
-  target git - msa_be_gate:develop1
+  target git - msa_be_gate:develop
 */
 let server = http.createServer((req, res) => {
 

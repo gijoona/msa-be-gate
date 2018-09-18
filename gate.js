@@ -4,6 +4,8 @@ const querystring = require('querystring');
 
 const tcpClient = require('./client.js');
 
+const conf = require('./conf/config').setting;
+
 let mapClients = {};
 let mapUrls = {};
 let mapResponse = {};
@@ -78,8 +80,8 @@ let server = http.createServer((req, res) => {
 
   // Distributor 접속
   this.clientDistributor = new tcpClient(
-    '35.200.103.250',
-    9000,
+    conf.distribute.ip,
+    conf.distribute.port,
     (options) => {  // onCreated
       isConnectedDistributor = true;
       this.clientDistributor.write(packet);

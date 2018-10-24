@@ -26,7 +26,7 @@ let server = http.createServer((req, res) => {
   let pathname = uri.pathname;
 
   if (method == 'OPTIONS') {  // 사전요청 처리
-    console.log('!OPTIONS');
+    // console.log('!OPTIONS');
     var headers = {};
     // IE8 does not allow domains to be specified, just the *
     // headers["Access-Control-Allow-Origin"] = req.headers.origin;
@@ -38,6 +38,7 @@ let server = http.createServer((req, res) => {
     res.writeHead(200, headers);
     res.end();
   } else if (method == 'POST' || method == 'PUT') {  // POST, PUT 처리
+    // console.log('POST or PUT');
     let body = '';
 
     req.on('data', function (data) {
@@ -57,6 +58,7 @@ let server = http.createServer((req, res) => {
       onRequest(res, method, pathname, params);
     });
   } else { // GET, DELETE 처리
+    // console.log('GET or DELETE');
     let params = {
       key: 0,
       data: uri.query
@@ -124,6 +126,8 @@ function onRequest (res, method, pathname, params) {
       method: method,
       params: params
     };
+
+    console.log('packet: ', packet);
 
     // 요청에 대한 응답 객체 저장
     mapResponse[index] = res;

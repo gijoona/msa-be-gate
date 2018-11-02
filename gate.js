@@ -24,6 +24,7 @@ let server = http.createServer((req, res) => {
   let method = req.method;
   let uri = url.parse(req.url, true);
   let pathname = uri.pathname;
+  let authorization = req.headers.authorization || '';
 
   if (method == 'OPTIONS') {  // 사전요청 처리
     // console.log('!OPTIONS');
@@ -34,7 +35,7 @@ let server = http.createServer((req, res) => {
     headers["Access-Control-Allow-Methods"] = "POST, GET, PUT, DELETE, OPTIONS";
     headers["Access-Control-Allow-Credentials"] = false;
     headers["Access-Control-Max-Age"] = '86400'; // 24 hours
-    headers["Access-Control-Allow-Headers"] = "X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept, Access-Control-Allow-Origin";
+    headers["Access-Control-Allow-Headers"] = "X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept, Access-Control-Allow-Origin, Authorization";
     res.writeHead(200, headers);
     res.end();
   } else if (method == 'POST' || method == 'PUT') {  // POST, PUT 처리
@@ -47,7 +48,8 @@ let server = http.createServer((req, res) => {
     req.on('end', function () {
       let params = {
         key: 0,
-        data: null
+        data: null,
+        authorization: authorization
       };
       if (req.headers['content-type'] == 'application/json') {
         params.data = JSON.parse(body);
@@ -61,7 +63,8 @@ let server = http.createServer((req, res) => {
     // console.log('GET or DELETE');
     let params = {
       key: 0,
-      data: uri.query
+      data: uri.query,
+      authorization: authorization
     }
     onRequest(res, method, pathname, params);
   }

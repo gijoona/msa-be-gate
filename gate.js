@@ -4,7 +4,8 @@ const querystring = require('querystring');
 
 const tcpClient = require('./client.js');
 
-const conf = require('./conf/config').setting;
+const conf = require('./conf/config').setting,
+      PORT = process.env.NODE_ENV === 'development' ? 8001 : 8000;
 
 let mapClients = {};
 let mapUrls = {};
@@ -68,7 +69,7 @@ let server = http.createServer((req, res) => {
     }
     onRequest(res, method, pathname, params);
   }
-}).listen(8000, () => {
+}).listen(PORT, () => {
 
   // Distributor 전달 패킷
   let packet = {
@@ -76,7 +77,7 @@ let server = http.createServer((req, res) => {
     method: 'POST',
     key: 0,
     params: {
-      port: 8000,
+      port: PORT,
       name: 'gate',
       urls: []
     }

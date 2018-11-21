@@ -5,7 +5,10 @@ const defaults = {
 const distribute = Object.assign(
   {},
   defaults,
-  { "port": 9000 });
+  {
+    "ip": "35.200.103.250",
+    "port": 9000
+  });
 const service = Object.assign(
   {},
   defaults,

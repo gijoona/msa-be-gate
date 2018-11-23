@@ -198,4 +198,5 @@ function onEndClient (options) {
 }
 
 function onErrorClient (options) {
+  console.log('onErrorClient', options);
 }

@@ -19,7 +19,7 @@ let index = 0;
   developer - ijgong
   date - 20180912
   target git - msa_be_gate:develop
-*/ 
+*/
 let server = http.createServer((req, res) => {
 
   let method = req.method;
